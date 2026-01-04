@@ -1,7 +1,11 @@
 import {createContext, useContext} from 'react';
 
-export const ThemeContext = createContext({themeMode : 'light', darkTheme: () => {},
-lighTheme: () => {},})
+export const ThemeContext = createContext({
+  themeMode: "light",
+  darkTheme: () => {},
+  lightTheme: () => {}, // ✅ fixed
+});
+
 
 export const ThemeProvider = ThemeContext.Provider;
 
