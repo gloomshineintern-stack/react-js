@@ -1,4 +1,4 @@
-import { useState } from 'react'
+import { useState, useEffect } from 'react'
 import reactLogo from './assets/react.svg'
 import viteLogo from '/vite.svg'
 import './App.css'
@@ -22,7 +22,7 @@ function App() {
     settodos((prev) => prev.map((prevTodo => prev === id? {...prevTodo, completed : !prevTodo.completed} : prevTodo)))
   }
 
-  useEffect(() => {//for getItem in local Storage just the key is ok and it takes the data in string format so for passing it json format   json.parse is used
+  useEffect(() => {//for getItem in local Storage just the key is ok and it takes the data in string format so for passing it json format   json.parse is used-
     const todos =  JSON.parse(localStorage.getItem("todos"))
 
     if(todos && todos.length > 0) {
