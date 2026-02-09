@@ -1,15 +1,21 @@
-import react, {useState, useMemo} from 'react'
-import UserContext from './UserContext';
+import React, { useMemo, useState } from 'react'
+import UserContext from './UserContext'
 
-const UserContextProvider = ({children}) => {
-    const[user, setUser]= useState(null);
-    const value = useMemo(() => ({user, setUser}), [user]);
 
+function UserContextProvider({children}) {
+
+    const [ user, setUser ] = useState(() => {
+        const savedUser = localStorage.getItem("user")
+        return savedUser ? JSON.parse(savedUser) : null
+    });
+    
+    const value = useMemo(() => ({ user, setUser }), [user])
     return (
         <UserContext.Provider value={value}>
-        {children}
+            {children}
         </UserContext.Provider>
     )
 }
 
 export default UserContextProvider;
+

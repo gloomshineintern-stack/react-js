@@ -5,15 +5,18 @@ import './App.css'
 import UserContextProvider from './Context/UserContextProvider';
 import Login from './components/Login';
 import Profile from './components/Profile';
+import {Route, Routes} from "react-router-dom";
+
+
 function App() {
   const [count, setCount] = useState(0)
 
   return (
     <>
-    <UserContextProvider>
-      <Login />
-      <Profile/>
-    </UserContextProvider>
+    <Routes>
+      <Route path="/" element={<Login />} />
+      <Route path="/profile" element = {<Profile />} />
+    </Routes>
     </>
   )
 }
